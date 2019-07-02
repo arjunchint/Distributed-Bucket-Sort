@@ -1,0 +1,22 @@
+  - Evidence:
+     - The text is not great at saying what I should be looking at in the
+       figures: -0.25
+     - They show the imbalance of workload from changing the quicksort
+       pivot (figure 2): good
+     - The testing of different combinations of pivot changes is good: it
+       makes up somewhat for the lack of reasoning for the pivot changes
+     - The evidence
+  - Planning:
+     - The deductive reasoning for why the changes in pivot choice locations
+       is under-motivated: this was discussed in class, but why switch to 1/3?
+     - The blame the load imbalance on the pivot, but the more obvious reason
+       for the load imbalance in quicksort with an uneven number of processes
+       is that, by default, one process must take the upper half of two other
+       process's keys in the exchange: -0.25
+     - The planning of using the improved space complexity of sample sort for
+       big problems is good
+     - The explanation for why Isend is better than Ssend is under-motivated:
+       there is no opportunity for overlapping computation and communication
+       within a call to swap_bitonic().  A better explanation for why Ssend
+       would be slower than Isend is if a different protocol is used (rendezvous
+       instead of eager) that is worse for smaller messages: -0.25

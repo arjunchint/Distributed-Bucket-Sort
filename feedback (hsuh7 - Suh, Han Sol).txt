@@ -1,0 +1,6 @@
+hsuh7 - Suh, Han Sol
+	Submission: 3,
+	Correctness: 6,
+	Notebook: 8.25 (Please see 'instructor-notes.txt' for additional feedback), Performance [Bonus]: 3 
+### Graded by Ankit
+

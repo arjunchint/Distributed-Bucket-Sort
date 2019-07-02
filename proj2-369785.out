@@ -1,0 +1,30 @@
+d43dafd98fed509642bf17074359cf2144f7202c
+:100644 100644 33e0b0f200cfe57ce43a8d0dca1031afc5b40d59 0000000000000000000000000000000000000000 M	proj2sorter_impl.h
+:100644 100644 10ba74495859bf995a9bff0596f58520e6b7ef1e 0000000000000000000000000000000000000000 M	quicksort.c
+:100644 100644 23a8ff0c3bc185bbb82a1b3bd2356f50e3f2a755 0000000000000000000000000000000000000000 M	slurm-proj2-hpctoolkit-stampede2.sh
+:100644 100644 a7df73c1b8d6fad70cf795dfc95ba52159c3de60 0000000000000000000000000000000000000000 M	swensonsort/sort.h
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o test_proj2.o test_proj2.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o proj2.o proj2.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o proj2sorter.o proj2sorter.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o local.o local.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o bitonic.o bitonic.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o quicksort.o quicksort.c
+mpicc -shared -o libproj2.so proj2.o proj2sorter.o local.o bitonic.o quicksort.o -lm
+mpicc -L./ -Wl,-rpath,./ -o test_proj2 test_proj2.o -lproj2
+/home1/05236/tg845354/proj2/cse6230fa17-proj2-achintapalli3
+c455-032.stampede2.tacc.utexas.edu
+Sat Oct 28 17:23:54 CDT 2017
+TACC:  Starting up job 369785 
+TACC:  Starting parallel tasks... 
+[0] test_proj2 minKeys 80 maxKeys 100000000 mult 64 seed 0
+[0] Testing numKeysLocal 80, numKeysGlobal 25600, total bytes 204800
+[0] Tested numKeysLocal 80, numKeysGlobal 25600, total bytes 204800: average bandwidth 1.938184e+06
+[0] Testing numKeysLocal 5120, numKeysGlobal 1638400, total bytes 13107200
+[0] Tested numKeysLocal 5120, numKeysGlobal 1638400, total bytes 13107200: average bandwidth 1.133646e+08
+[0] Testing numKeysLocal 327680, numKeysGlobal 104857600, total bytes 838860800
+[0] Tested numKeysLocal 327680, numKeysGlobal 104857600, total bytes 838860800: average bandwidth 8.125363e+08
+[0] Testing numKeysLocal 20971520, numKeysGlobal 6710886400, total bytes 53687091200
+[0] Tested numKeysLocal 20971520, numKeysGlobal 6710886400, total bytes 53687091200: average bandwidth 8.872833e+08
+[0] Harmonic average bandwidth: 7.588322e+06
+TACC:  Shutdown complete. Exiting. 
+Sat Oct 28 17:26:26 CDT 2017

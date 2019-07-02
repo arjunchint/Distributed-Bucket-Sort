@@ -1,0 +1,26 @@
+afec9f7e978554d443f71d46c14446e9b30a5751
+:100644 100644 471a01624baaddfdc101bd5d20e092fd34fc62ba 0000000000000000000000000000000000000000 M	quicksort.c
+:100644 100644 23a8ff0c3bc185bbb82a1b3bd2356f50e3f2a755 0000000000000000000000000000000000000000 M	slurm-proj2-hpctoolkit-stampede2.sh
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o test_proj2.o test_proj2.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o proj2.o proj2.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o proj2sorter.o proj2sorter.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o local.o local.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o bitonic.o bitonic.c
+mpicc -I../cse6230fa17-proj2-achintapalli3/Random123/include -g -Wall -std=c99 -fpic -O3 -c -o quicksort.o quicksort.c
+mpicc -shared -o libproj2.so proj2.o proj2sorter.o local.o bitonic.o quicksort.o -lm
+mpicc -L./ -Wl,-rpath,./ -o test_proj2 test_proj2.o -lproj2
+/home1/05236/tg845354/proj2/cse6230fa17-proj2-achintapalli3
+c455-081.stampede2.tacc.utexas.edu
+Sat Oct 28 14:50:06 CDT 2017
+TACC:  Starting up job 369289 
+TACC:  Starting parallel tasks... 
+[0] test_proj2 minKeys 80 maxKeys 1000000 mult 64 seed 0
+[0] Testing numKeysLocal 80, numKeysGlobal 15360, total bytes 122880
+[0] Tested numKeysLocal 80, numKeysGlobal 15360, total bytes 122880: average bandwidth 7.696616e+05
+[0] Testing numKeysLocal 5120, numKeysGlobal 983040, total bytes 7864320
+[0] Tested numKeysLocal 5120, numKeysGlobal 983040, total bytes 7864320: average bandwidth 3.358291e+07
+[0] Testing numKeysLocal 327680, numKeysGlobal 62914560, total bytes 503316480
+[0] Tested numKeysLocal 327680, numKeysGlobal 62914560, total bytes 503316480: average bandwidth 8.347702e+08
+[0] Harmonic average bandwidth: 2.255220e+06
+TACC:  Shutdown complete. Exiting. 
+Sat Oct 28 14:50:50 CDT 2017
